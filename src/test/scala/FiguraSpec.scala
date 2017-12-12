@@ -43,5 +43,58 @@ class StackSpec extends FlatSpec {
     //println(circulo.radio)
   }
 
+  "Prueba" should "Figura mover parcial" in {
+
+    assert(circulo.x == 2)
+    assert(rectangulo.x == 4)
+    assert(linea.x == 4)
+
+    val moverAlOrigen = Figura.moverParcial(0)(0) _
+
+    moverAlOrigen(circulo)
+    moverAlOrigen(rectangulo)
+    moverAlOrigen(linea)
+
+    assert(circulo.x == 0)
+    assert(rectangulo.x == 0)
+    assert(linea.x == 0)
+  }
+
+  "Prueba" should "Figura escalar parcial" in {
+
+    assert(circulo.radio == 5)
+    assert(rectangulo.ancho == 3)
+    assert(rectangulo.alto == 6)
+    assert(linea.xFin == 7)
+    assert(linea.yFin == 10)
+
+    val duplicar = Figura.escalarParcial(2) _
+
+    duplicar(circulo)
+    duplicar(rectangulo)
+    duplicar(linea)
+
+    assert(circulo.radio == 10)
+    assert(rectangulo.ancho == 6)
+    assert(rectangulo.alto == 12)
+    assert(linea.xFin == 14)
+    assert(linea.yFin == 20)
+  }
+
+  "Prueba" should "Figura moverX" in {
+
+    assert(circulo.x == 2)
+    assert(rectangulo.x == 4)
+    assert(linea.x == 4)
+
+    val moverAlOrigen = Figura.moverX(0)
+
+    moverAlOrigen(10)
+
+    assert(circulo.x == 0)
+    assert(rectangulo.x == 0)
+    assert(linea.x == 0)
+  }
+
 }
 

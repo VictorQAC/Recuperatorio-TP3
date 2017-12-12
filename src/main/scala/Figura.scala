@@ -1,4 +1,4 @@
-object Figura {
+case object Figura {
 
   def create(x:Double, y:Double) : Figura[Double] = {
     var f = new Figura[Double]
@@ -7,8 +7,20 @@ object Figura {
     return f
 
   }
-}
 
+  def moverParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
+    figura.mover(x,y)
+  }
+
+  def escalarParcial(prop: Double) (figura: Figura[Double]) = {
+    figura.escalar(prop)
+  }
+
+  def moverX(x:Double) = {
+    moverParcial(x) _
+  }
+
+}
 
 class Figura [T]{
 
@@ -23,6 +35,10 @@ class Figura [T]{
   def mover(x:Double, y:Double): Unit ={
     this.x = x
     this.y = y
+  }
+
+  def escalar(prop: Double): Unit ={
+
   }
 
 }

@@ -15,7 +15,7 @@ class Circulo[T] extends Figura [T] {
 
   var radio: Double = 0
 
-  def escalar(prop: Double): Unit ={
+  override def escalar(prop: Double): Unit ={
     this.radio = (this.radio * prop)
   }
 

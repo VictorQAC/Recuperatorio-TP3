@@ -17,7 +17,7 @@ class Rectangulo[T] extends Figura [T] {
   var ancho: Double = 0
   var alto: Double = 0
 
-  def escalar(prop: Double): Unit ={
+  override def escalar(prop: Double): Unit ={
     this.ancho = (this.ancho * prop)
     this.alto = (this.ancho * prop)
   }

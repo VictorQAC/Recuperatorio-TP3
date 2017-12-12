@@ -22,7 +22,7 @@ class Linea[T] extends Figura [T] {
     return l
   }
 
-  def escalar(prop: Double): Unit ={
+  override def escalar(prop: Double): Unit ={
     this.x = (this.x * prop)
     this.y = (this.y * prop)
     this.xFin = (this.xFin * prop)
