@@ -1,16 +1,19 @@
-case object Figura {
+object Figura {
 
-  def create(x:Double, y:Double) : Figura[Double] = {
+/*  def create(x:Double, y:Double) : Figura[Double] = {
     var f = new Figura[Double]
     f.x = x
     f.y = y
     return f
 
-  }
+  }*/
 
-  def trasladarParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
-    figura.trasladar(x,y,figura)
+  def trasladarParcial(x:Double) (y:Double) (figura: Figura): Figura = figura match {
+    case c@Circulo(_, _, _) => c.copy(x,y)
+
+
   }
+  /*
 
   def moverParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
     figura.mover(x,y)
@@ -24,9 +27,9 @@ case object Figura {
     moverParcial(x) _
   }
 
-  def moverY(y:Double) = {
+  /*def moverY(y:Double) = {
     moverParcial _ (y)
-  }
+  }*/
 
   def trasladarXeY(n: Double) = {
     trasladarParcial(n)(n) _
@@ -38,28 +41,32 @@ case object Figura {
 
   def cuadruplicar() = {
     escalarParcial(4) _
-  }
+  }*/
 
 }
 
-class Figura [T]{
+abstract class Figura {
 
-  var x: Double = 0
-  var y: Double = 0
+  val x: Double
+  val y: Double
 
-  def trasladar(x:Double, y:Double, figura: Figura[Double]): Figura [Double] ={
-    var f = Figura.create(figura.x + x,figura.y + y)
+
+/*  def trasladar(x:Double, y:Double, figura: Figura): Figura ={
+    var f = figura.copy()
+    f.x = figura.x + f.x
+    f.y = figura.y + f.y
     return f
-  }
+  }*/
 
-  def mover(x:Double, y:Double): Unit ={
+  /*def mover(x:Double, y:Double): Unit ={
     this.x = x
     this.y = y
+    // tiene que devolver una instancia nueva
   }
 
   def escalar(prop: Double): Unit ={
-
-  }
+    // tiene que devolver una instancia nueva
+  }*/
 
 }
 

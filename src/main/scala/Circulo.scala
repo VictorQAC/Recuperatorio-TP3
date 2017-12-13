@@ -1,22 +1,23 @@
 object Circulo {
 
-  def create(x:Double, y:Double,radio: Double) : Circulo[Double] = {
-    var c = new Circulo[Double]
+/*  def create(x:Double, y:Double,radio: Double) : Circulo = {
+    var c = new Circulo
     c.x = x
     c.y = y
     c.radio = radio
     return c
 
-  }
+  }*/
+
 
 }
 
-class Circulo[T] extends Figura [T] {
+case class Circulo(x:Double,y:Double,radio:Double) extends Figura {
 
-  var radio: Double = 0
+  //var radio: Double = 0
 
-  override def escalar(prop: Double): Unit ={
+  /*override def escalar(prop: Double): Unit ={
     this.radio = (this.radio * prop)
-  }
+  }*/
 
 }
