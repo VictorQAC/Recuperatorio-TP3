@@ -8,6 +8,10 @@ case object Figura {
 
   }
 
+  def trasladarParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
+    figura.trasladar(x,y,figura)
+  }
+
   def moverParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
     figura.mover(x,y)
   }
@@ -18,6 +22,22 @@ case object Figura {
 
   def moverX(x:Double) = {
     moverParcial(x) _
+  }
+
+  def moverY(y:Double) = {
+    moverParcial _ (y)
+  }
+
+  def trasladarXeY(n: Double) = {
+    trasladarParcial(n)(n) _
+  }
+
+  def duplicar() = {
+    escalarParcial(2) _
+  }
+
+  def cuadruplicar() = {
+    escalarParcial(4) _
   }
 
 }
