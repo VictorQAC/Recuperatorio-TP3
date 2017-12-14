@@ -10,7 +10,7 @@ class StackSpec extends FlatSpec {
   val rectangulo = new Rectangulo(4,9,3,6)
   val linea      = new Linea(4,7,7,10)
   var figuras    = new ArrayBuffer[Figura]()
-  var motor      = new Motor(figuras)
+  var motor      = new Motor
 
   /*"Prueba" should "Figura creacion" in {
 
@@ -95,7 +95,18 @@ class StackSpec extends FlatSpec {
   "Prueba" should "Motor getFiguras" in {
 
     motor.agregarFigura(circulo)
+    motor.agregarFigura(rectangulo)
 
+    println(motor.getFiguras())
+  }
+
+  "Prueba" should "Motor transformar" in {
+
+    motor.agregarFigura(circulo)
+    motor.transformar(Figura.trasladar(5)(6)_)
+    println(motor.figuras)
+    val moverAlOrigen = Figura.mover(-5)(-6)_
+    motor.transformar(moverAlOrigen)
     println(motor.figuras)
   }
 
