@@ -12,7 +12,7 @@ case object Rectangulo {
 
 }
 
-class Rectangulo[T] /*extends Figura [T]*/ {
+case class Rectangulo(x:Double, y:Double, ancho: Double, alto: Double) extends Figura {
 
  /* var ancho: Double = 0
   var alto: Double = 0

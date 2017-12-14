@@ -1,47 +1,57 @@
 object Figura {
 
-/*  def create(x:Double, y:Double) : Figura[Double] = {
-    var f = new Figura[Double]
-    f.x = x
-    f.y = y
-    return f
+  /*  def create(x:Double, y:Double) : Figura[Double] = {
+      var f = new Figura[Double]
+      f.x = x
+      f.y = y
+      return f
 
-  }*/
+    }*/
 
-  def trasladarParcial(x:Double) (y:Double) (figura: Figura): Figura = figura match {
+  def trasladar(x:Double) (y:Double) (figura: Figura): Figura = figura match {
     case c@Circulo(_, _, _) => c.copy(x,y)
-
-
-  }
-  /*
-
-  def moverParcial(x:Double) (y:Double) (figura: Figura[Double]) = {
-    figura.mover(x,y)
+    case r@Rectangulo(_,_,_,_) => r.copy(x,y)
+    case l@Linea(_,_,_,_) => l.copy(x,y)
   }
 
-  def escalarParcial(prop: Double) (figura: Figura[Double]) = {
-    figura.escalar(prop)
+  def mover(x:Double) (y:Double) (figura: Figura): Figura = figura match {
+    case c@Circulo(_, _, _) => c.copy(c.x + x, c.y + y)
+    case r@Rectangulo(_,_,_,_) => r.copy(r.x + x, r.y + y)
+    case l@Linea(_,_,_,_) => l.copy(l.x + x, l.y + y)
+  }
+
+  def escalar(prop: Double) (figura: Figura) : Figura = figura match {
+    case c@Circulo(_, _, radio) => c.copy(radio * prop)
+    case r@Rectangulo(_,_,ancho,alto) => r.copy(ancho * prop, alto * prop)
+    case l@Linea(_,_,xFin,yFin) => l.copy(xFin * prop, yFin * prop)
   }
 
   def moverX(x:Double) = {
-    moverParcial(x) _
+    mover(x) _
   }
 
-  /*def moverY(y:Double) = {
-    moverParcial _ (y)
-  }*/
+  def moverY(y:Double) = {
+    //mover _ (y)
+  }
 
   def trasladarXeY(n: Double) = {
-    trasladarParcial(n)(n) _
+    trasladar(n)(n) _
   }
 
   def duplicar() = {
-    escalarParcial(2) _
+    escalar(2) _
   }
 
   def cuadruplicar() = {
-    escalarParcial(4) _
-  }*/
+    escalar(4) _
+  }
+
+  def doble(tras: Figura => Figura) (figura: Figura) : Figura = {
+    val res1 = tras.apply(figura)
+    val res2 = tras.apply(res1)
+    return res2
+  }
+
 
 }
 

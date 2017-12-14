@@ -12,7 +12,7 @@ case object Linea {
 
 }
 
-class Linea[T] /*extends Figura [T]*/ {
+case class Linea(x:Double, y:Double, xFin: Double, yFin: Double) extends Figura {
 
  /* var xFin: Double = 0
   var yFin: Double = 0
